@@ -1,0 +1,61 @@
+let spreadsheet = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1hTOrEE8Imt9QYWPxyrkoB-HemPH0kPwlzmCb4rgI7jM/edit#gid=0');
+let sheet = spreadsheet.getSheetByName('engenharia_de_software');
+let lastRow = sheet.getLastRow();
+
+function checkAbsences(row){
+
+  var absences = sheet.getRange(row, 3).getValue();
+
+  if (absences > 15) {
+    return true;
+  } else {
+    return false;
+  }
+
+}
+
+function checkGrade (row){
+
+  var grades = sheet.getRange(row, 4, 1, 3).getValues();
+  var average = Math.ceil((grades[0][0]+grades[0][1]+grades[0][2])/3);
+
+  switch (true) {
+
+    case average >= 70:
+      sheet.getRange(row,7).setValue('Aprovado');
+      sheet.getRange(row,8).setValue(0);
+      break;
+      
+    case average >= 50:
+      sheet.getRange(row,7).setValue('Exame Final');
+      calculateFinalRequirement(row, average);
+      break;
+
+    default:
+      sheet.getRange(row,7).setValue('Aprovado');
+      sheet.getRange(row,8).setValue(0);
+  }
+}
+
+function calculateFinalRequirement(row, average){
+
+  var finalRequirement = 100-average;
+  sheet.getRange(row,8).setValue(finalRequirement);
+
+}
+
+function teste (){
+  for (var row = 4; row <= lastRow; row++) {
+
+    if (checkAbsences(row)) {
+      sheet.getRange(row,7).setValue('Reprovado por Falta');
+      sheet.getRange(row,8).setValue(0);
+    } 
+
+    else {
+      checkGrade(row);   
+    }
+  }
+}
+
+
