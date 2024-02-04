@@ -3,6 +3,7 @@
 O desafio deixava livre a escolha da linguagem para o desafio, dando a documentação do google sheets como uma referencia e guia para a realização do mesmo, existindo assim varios meios de realizar-lo, a maioria configurando uma api e a consumindo atraves de alguma linguagem, também sendo possivel usar o sheetDB para tranformar a planilha num BD, mas através da documentação nota-se que a maneira mais prática e eficiente é desenvolver um script pelo google apps script e executa-lo diretamenta na planilha atraves da implementação do script por meio de um botão, sendo esse o meio que escolhi para realizar o desafio, o resultado pode ser conferido no gif abaixo sendo o codigo do script encontrado nesse repositorio com o nome de "code_challenge_tunts_rocks".
 
 Link para planilha: https://docs.google.com/spreadsheets/d/1hTOrEE8Imt9QYWPxyrkoB-HemPH0kPwlzmCb4rgI7jM/edit?usp=sharing
+É necessario estar logado numa conta google e aceitar um termo para que o botão tenha permissao de executar o script.
 
 ![imagem da página](https://github.com/WindFox8/Challenge-Tunts-Rocks/blob/main/tunts_rocks.gif)
 
